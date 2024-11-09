@@ -1,3 +1,62 @@
+// Chart Layout Properties
+$chart-layout: (
+  dimensions: (
+    height: 384px,
+    // equivalent to h-96
+    padding: 2rem // equivalent to p-8,,,
+  ),
+  margins: (
+    top: 50px,
+    right: 30px,
+    left: 70px,
+    bottom: 70px,
+  ),
+  axis: (
+    y: (
+      label: (
+        offset: 0,
+        dx: -50px,
+        dy: 50px,
+        angle: -90deg,
+        position: 'insideLeft',
+      ),
+      text: (
+        size: 12px,
+        weight: normal,
+      ),
+    ),
+    x: (
+      height: 70px,
+      angle: -45deg,
+      text: (
+        anchor: 'end',
+        size: 12px,
+      ),
+    ),
+  ),
+  bar: (
+    stroke-width: 8px,
+  ),
+);
+
+@function get-chart-layout($category, $property: null, $subprop: null, $subsubprop: null) {
+  $value: map-get($chart-layout, $category);
+
+  @if $property {
+    $value: map-get($value, $property);
+
+    @if $subprop {
+      $value: map-get($value, $subprop);
+
+      @if $subsubprop {
+        $value: map-get($value, $subsubprop);
+      }
+    }
+  }
+
+  @return $value;
+}
+
 // Chart Colors
 $chart-colors: (
   hover: (
@@ -9,9 +68,8 @@ $chart-colors: (
     light: #3b82f6,
   ),
   active-background: (
-    dark: rgba(59, 130, 246, 0.3),
-    // Blue with transparency
-    light: rgba(96, 165, 250, 0.3) // Lighter blue with transparency,
+    dark: rgba(255, 255, 255, 0.1),
+    light: rgba(0, 0, 0, 0.1),
   ),
   text: (
     dark: #ffffff,
@@ -20,17 +78,6 @@ $chart-colors: (
   background: (
     dark: #1f2937,
     light: #ffffff,
-  ),
-  highlight: (
-    dark: rgba(255, 255, 255, 0.1),
-    // subtle light highlight for dark mode
-    light: rgba(0, 0, 0, 0.1) // subtle dark highlight for light mode,,,,,,,,,,
-  ),
-  hover-background: (
-    // New color specifically for the hover background rectangle
-    dark: #2563eb,
-    // Try a different color to make it obvious
-    light: #93c5fd,
   ),
 );
 

@@ -37,6 +37,58 @@
 }
 
 .chart {
+  &[data-theme='dark'],
+  &[data-theme='light'] {
+    // Layout properties
+    --chart-height: #{vars.get-chart-layout('dimensions', 'height')};
+    --chart-padding: #{vars.get-chart-layout('dimensions', 'padding')};
+
+    // Margins
+    --chart-margin-top: #{vars.get-chart-layout('margins', 'top')};
+    --chart-margin-right: #{vars.get-chart-layout('margins', 'right')};
+    --chart-margin-bottom: #{vars.get-chart-layout('margins', 'bottom')};
+    --chart-margin-left: #{vars.get-chart-layout('margins', 'left')};
+
+    // Y Axis properties
+    --chart-yaxis-label-offset: #{vars.get-chart-layout('axis', 'y', 'label', 'offset')};
+    --chart-yaxis-label-dx: #{vars.get-chart-layout('axis', 'y', 'label', 'dx')};
+    --chart-yaxis-label-dy: #{vars.get-chart-layout('axis', 'y', 'label', 'dy')};
+    --chart-yaxis-label-angle: #{vars.get-chart-layout('axis', 'y', 'label', 'angle')};
+    --chart-yaxis-label-position: #{vars.get-chart-layout('axis', 'y', 'label', 'position')};
+
+    // X Axis properties
+    --chart-xaxis-height: #{vars.get-chart-layout('axis', 'x', 'height')};
+    --chart-xaxis-angle: #{vars.get-chart-layout('axis', 'x', 'angle')};
+    --chart-xaxis-text-anchor: #{vars.get-chart-layout('axis', 'x', 'text', 'anchor')};
+  }
+  &[data-theme='dark'],
+  &[data-theme='light'] {
+    // Layout properties
+    --chart-height: #{vars.get-chart-layout('dimensions', 'height')};
+    --chart-padding: #{vars.get-chart-layout('dimensions', 'padding')};
+
+    // Margins
+    --chart-margin-top: #{vars.get-chart-layout('margins', 'top')};
+    --chart-margin-right: #{vars.get-chart-layout('margins', 'right')};
+    --chart-margin-bottom: #{vars.get-chart-layout('margins', 'bottom')};
+    --chart-margin-left: #{vars.get-chart-layout('margins', 'left')};
+
+    // Y Axis properties
+    --chart-yaxis-label-offset: #{vars.get-chart-layout('axis', 'y', 'label', 'offset')};
+    --chart-yaxis-label-dx: #{vars.get-chart-layout('axis', 'y', 'label', 'dx')};
+    --chart-yaxis-label-dy: #{vars.get-chart-layout('axis', 'y', 'label', 'dy')};
+    --chart-yaxis-label-angle: #{vars.get-chart-layout('axis', 'y', 'label', 'angle')};
+    --chart-yaxis-label-position: #{vars.get-chart-layout('axis', 'y', 'label', 'position')};
+
+    // X Axis properties
+    --chart-xaxis-height: #{vars.get-chart-layout('axis', 'x', 'height')};
+    --chart-xaxis-angle: #{vars.get-chart-layout('axis', 'x', 'angle')};
+    --chart-xaxis-text-anchor: #{vars.get-chart-layout('axis', 'x', 'text', 'anchor')};
+
+    // Bar properties
+    --chart-bar-stroke-width: #{vars.get-chart-layout('bar', 'stroke-width')};
+  }
+
   &[data-theme='dark'] {
     --chart-hover: #{vars.get-chart-color('hover', 'dark')};
     --chart-bars: #{vars.get-chart-color('bars', 'dark')};
@@ -51,12 +103,6 @@
     --chart-text: #{vars.get-chart-color('text', 'light')};
     --chart-background: #{vars.get-chart-color('background', 'light')};
     --chart-active-bg: #{vars.get-chart-color('active-background', 'light')};
-  }
-
-  :global {
-    .recharts-layer.recharts-active-bar {
-      fill: var(--chart-active-bg) !important;
-    }
   }
 }
 
