@@ -85,8 +85,8 @@ export default function NewsConsumptionDashboard() {
 								position: "insideLeft",
 								fill: chartColors.text,
 								offset: 0,
-								dx: -50,
-								dy: 50,
+								dx: 0,
+								dy: 80,
 							}}
 							tick={{ fill: chartColors.text }}
 						/>
