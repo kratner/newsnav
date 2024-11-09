@@ -1,0 +1,45 @@
+// src/styles/theme/_variables.scss
+
+// Colors
+$colors: (
+  primary: (
+    light: #3b82f6,
+    dark: #60a5fa,
+  ),
+  background: (
+    light: #ffffff,
+    dark: #1a1a1a,
+  ),
+  text: (
+    light: #000000,
+    dark: #ffffff,
+  ),
+  gray: (
+    light: #6b7280,
+    dark: #9ca3af,
+  ),
+);
+
+// Chart Colors
+$chart-colors: (
+  bar: (
+    light: #3b82f6,
+    dark: #60a5fa,
+  ),
+  axis: (
+    light: #000000,
+    dark: #ffffff,
+  ),
+  grid: (
+    light: #e5e7eb,
+    dark: #374151,
+  ),
+);
+
+// Breakpoints
+$breakpoints: (
+  sm: 640px,
+  md: 768px,
+  lg: 1024px,
+  xl: 1280px,
+);

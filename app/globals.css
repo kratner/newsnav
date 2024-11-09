@@ -3,19 +3,31 @@
 @tailwind utilities;
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --font-geist-sans: 'GeistSans', system-ui, sans-serif;
+  --font-geist-mono: 'GeistMono', monospace;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+@layer base {
+  html,
+  body {
+    min-height: 100vh;
+  }
+
+  body {
+    @apply bg-gray-50 transition-colors duration-200;
+  }
+
+  body[data-theme='dark'] {
+    @apply bg-gray-900 text-white;
+  }
+
+  body[data-theme='light'] {
+    @apply bg-gray-50 text-black;
   }
 }
 
-body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+@layer components {
+  .chart-container {
+    @apply rounded-lg p-4 shadow-lg transition-colors duration-200;
+  }
 }
