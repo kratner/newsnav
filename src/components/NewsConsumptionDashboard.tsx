@@ -128,13 +128,18 @@ export default function NewsConsumptionDashboard() {
 					<ul className="list-disc pl-6 space-y-2">
 						{data
 							.find((d: NewsSource) => d.category === selectedCategory)
-							?.platforms?.map((platform: string) => (
+							?.platforms?.map((platform) => (
 								<li
-									key={platform}
+									key={platform.name}
 									className={styles.platformItem}
 									data-theme={theme}
 								>
-									{platform}
+									<span className="flex justify-between items-center">
+										<span>{platform.name}</span>
+										<span className="ml-4 text-sm font-medium">
+											{platform.percentage}%
+										</span>
+									</span>
 								</li>
 							))}
 					</ul>

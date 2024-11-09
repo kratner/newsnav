@@ -85,12 +85,24 @@
 }
 
 .platformItem {
+  @apply flex items-center justify-between transition-colors duration-200;
+
   &[data-theme='dark'] {
     @apply text-gray-300;
+    span {
+      &:last-child {
+        @apply text-blue-300;
+      }
+    }
   }
 
   &[data-theme='light'] {
     @apply text-gray-700;
+    span {
+      &:last-child {
+        @apply text-blue-600;
+      }
+    }
   }
 }
 
