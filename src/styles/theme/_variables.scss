@@ -1,6 +1,44 @@
-// src/styles/theme/_variables.scss
+// Chart Colors
+$chart-colors: (
+  hover: (
+    dark: #93c5fd,
+    light: #2563eb,
+  ),
+  bars: (
+    dark: #60a5fa,
+    light: #3b82f6,
+  ),
+  active-background: (
+    dark: rgba(59, 130, 246, 0.3),
+    // Blue with transparency
+    light: rgba(96, 165, 250, 0.3) // Lighter blue with transparency,
+  ),
+  text: (
+    dark: #ffffff,
+    light: #000000,
+  ),
+  background: (
+    dark: #1f2937,
+    light: #ffffff,
+  ),
+  highlight: (
+    dark: rgba(255, 255, 255, 0.1),
+    // subtle light highlight for dark mode
+    light: rgba(0, 0, 0, 0.1) // subtle dark highlight for light mode,,,,,,,,,,
+  ),
+  hover-background: (
+    // New color specifically for the hover background rectangle
+    dark: #2563eb,
+    // Try a different color to make it obvious
+    light: #93c5fd,
+  ),
+);
 
-// Colors
+@function get-chart-color($category, $theme) {
+  @return map-get(map-get($chart-colors, $category), $theme);
+}
+
+// Other color variables
 $colors: (
   primary: (
     light: #3b82f6,
@@ -20,26 +58,6 @@ $colors: (
   ),
 );
 
-// Chart Colors
-$chart-colors: (
-  bar: (
-    light: #3b82f6,
-    dark: #60a5fa,
-  ),
-  axis: (
-    light: #000000,
-    dark: #ffffff,
-  ),
-  grid: (
-    light: #e5e7eb,
-    dark: #374151,
-  ),
-);
-
-// Breakpoints
-$breakpoints: (
-  sm: 640px,
-  md: 768px,
-  lg: 1024px,
-  xl: 1280px,
-);
+@function get-color($category, $mode) {
+  @return map-get(map-get($colors, $category), $mode);
+}

@@ -36,8 +36,32 @@
   }
 }
 
+.chart {
+  &[data-theme='dark'] {
+    --chart-hover: #{vars.get-chart-color('hover', 'dark')};
+    --chart-bars: #{vars.get-chart-color('bars', 'dark')};
+    --chart-text: #{vars.get-chart-color('text', 'dark')};
+    --chart-background: #{vars.get-chart-color('background', 'dark')};
+    --chart-active-bg: #{vars.get-chart-color('active-background', 'dark')};
+  }
+
+  &[data-theme='light'] {
+    --chart-hover: #{vars.get-chart-color('hover', 'light')};
+    --chart-bars: #{vars.get-chart-color('bars', 'light')};
+    --chart-text: #{vars.get-chart-color('text', 'light')};
+    --chart-background: #{vars.get-chart-color('background', 'light')};
+    --chart-active-bg: #{vars.get-chart-color('active-background', 'light')};
+  }
+
+  :global {
+    .recharts-layer.recharts-active-bar {
+      fill: var(--chart-active-bg) !important;
+    }
+  }
+}
+
 .chartContainer {
-  @apply h-96 w-full rounded-lg p-4 shadow-lg transition-colors duration-200;
+  @apply h-96 w-full rounded-lg p-8 shadow-lg transition-colors duration-200;
 
   &[data-theme='dark'] {
     @apply bg-gray-800;

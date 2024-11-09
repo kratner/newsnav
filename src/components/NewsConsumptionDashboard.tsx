@@ -9,6 +9,7 @@ import {
 	Tooltip,
 	ResponsiveContainer,
 } from "recharts";
+import type { BarProps } from "recharts";
 import type { NewsSource } from "@/types/news";
 import { newsConsumptionData } from "@/types/news";
 import { useTheme } from "@/contexts/ThemeContext";
@@ -27,9 +28,11 @@ export default function NewsConsumptionDashboard() {
 	];
 
 	const chartColors = {
-		text: theme === "dark" ? "#ffffff" : "#000000",
-		background: theme === "dark" ? "#1f2937" : "#ffffff",
-		bars: theme === "dark" ? "#60a5fa" : "#3b82f6",
+		text: "var(--chart-text)",
+		background: "var(--chart-background)",
+		bars: "var(--chart-bars)",
+		hover: "var(--chart-hover)",
+		activeBg: "var(--chart-active-bg)",
 	};
 
 	return (
@@ -58,11 +61,14 @@ export default function NewsConsumptionDashboard() {
 				How people receive their news across different platforms
 			</p>
 
-			<div className={styles.chartContainer} data-theme={theme}>
+			<div
+				className={`${styles.chartContainer} ${styles.chart}`}
+				data-theme={theme}
+			>
 				<ResponsiveContainer width="100%" height="100%">
 					<BarChart
 						data={data}
-						margin={{ top: 20, right: 30, left: 20, bottom: 70 }}
+						margin={{ top: 50, right: 30, left: 70, bottom: 70 }}
 					>
 						<XAxis
 							dataKey="name"
@@ -78,10 +84,14 @@ export default function NewsConsumptionDashboard() {
 								angle: -90,
 								position: "insideLeft",
 								fill: chartColors.text,
+								offset: 0,
+								dx: -50,
+								dy: 50,
 							}}
 							tick={{ fill: chartColors.text }}
 						/>
 						<Tooltip
+							cursor={false}
 							formatter={formatTooltip}
 							contentStyle={{
 								backgroundColor: chartColors.background,
@@ -94,6 +104,13 @@ export default function NewsConsumptionDashboard() {
 							fill={chartColors.bars}
 							onClick={(data: NewsSource) => setSelectedCategory(data.category)}
 							className="cursor-pointer"
+							activeBar={
+								{
+									fill: chartColors.hover,
+									stroke: chartColors.activeBg,
+									strokeWidth: 8,
+								} satisfies NonNullable<BarProps["activeBar"]>
+							}
 						/>
 					</BarChart>
 				</ResponsiveContainer>
@@ -112,7 +129,11 @@ export default function NewsConsumptionDashboard() {
 						{data
 							.find((d: NewsSource) => d.category === selectedCategory)
 							?.platforms?.map((platform: string) => (
-								<li key={platform} className={styles.platformItem}>
+								<li
+									key={platform}
+									className={styles.platformItem}
+									data-theme={theme}
+								>
 									{platform}
 								</li>
 							))}
@@ -124,6 +145,7 @@ export default function NewsConsumptionDashboard() {
 				<p>* Data based on recent surveys of news consumption habits</p>
 				<p>* Users may consume news from multiple sources</p>
 			</div>
+
 			<div
 				className={`${styles.copyright} mt-4 pt-4 border-t border-gray-700`}
 				data-theme={theme}
